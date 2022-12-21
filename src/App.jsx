@@ -3,7 +3,7 @@ import './App.css';
 
 function App() {
 const [list, setList] = useState([]);
-const [undid, setUndid] = useState([]); // aqui vou armazenar a nova lista que sera com a aqueles que foram desfeitos
+const [undid, setUndid] = useState([]);
 
 const handleClick = (event) => {
  
@@ -23,7 +23,6 @@ const handleUndu= (event) => {
     return;
   }
 
-// para eu ter um histórico dos dots para serem recuperados.
   const lastItem= list[list.length-1];
  
   setUndid((prev) => [...prev, lastItem]);
@@ -33,7 +32,7 @@ const handleUndu= (event) => {
     return newArr;
   })
 };
-// inseri um if aqui para a aplicação não crachar quando não houver mais dots para serem removidos.
+
 const handleRedo = (event) => {
   event.stopPropagation();
   console.log('redo');
