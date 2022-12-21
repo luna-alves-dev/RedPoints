@@ -7,17 +7,36 @@ const handleClick = (event) => {
  
   const newDot = {
     clientX: event.clientX,
-    clientY: event.clientY
-  }
-  // copio o que já tinha na minha state com o uso do spread operator e crio um novo array, e passo um novo valor para ele.
+    clientY: event.clientY,
+  };
+  console.log(newDot);
   setList((prev) => [...prev, newDot]);
-}
-  return <div id='page' onClick={handleClick}>
-    {JSON.stringify(list)} 
-    <span className='dot'/>
-    </div>;
+};
+// stopProgation impede que quando eu clicar no "desfazer", um novo dot seja exibido em cima do botão.
+const handleUndu= (event) => {
+  event.stopPropagation();
+  console.log('undu');
+ 
+  // Agora trabalha-se na função que vai fazer a retirada do último dot clicado.
+
+  setList((prev) => {
+    const newArr = [...prev];
+    newArr.splice(0,-1);
+    return newArr;
+  })
+};
+// Por ser um array eu consigo fazer um map no meu list. Aqui itero e faço um loop nas informações que tenho.
+  return (
+  <div id='page' onClick={handleClick}>
+    <button onClick={handleUndu}>Desfazer</button>
+  {list.map((item) => (
+  <span 
+  className='dot'
+  style={{ left: item.clientX, top: item.clientY }}
+  />
+  ))} 
+    </div>
+);
 }
 
 export default App;
-
-// fazendo o stringfy eu consigo ver se está retornando os valores do novo array a partir dos cliques sucessivos na tela.
