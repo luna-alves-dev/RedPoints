@@ -20,8 +20,7 @@ const handleUndu= (event) => {
   // Agora trabalha-se na função que vai fazer a retirada do último dot clicado.
 
   setList((prev) => {
-    const newArr = [...prev];
-    newArr.splice(0,-1);
+    const newArr = [...prev].slice(0,-1);
     return newArr;
   })
 };
