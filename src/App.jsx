@@ -3,6 +3,8 @@ import './App.css';
 
 function App() {
 const [list, setList] = useState([]);
+const [undid, setUndid] = useState([]); // aqui vou armazenar a nova lista que sera com a aqueles que foram desfeitos
+
 const handleClick = (event) => {
  
   const newDot = {
@@ -12,22 +14,43 @@ const handleClick = (event) => {
   console.log(newDot);
   setList((prev) => [...prev, newDot]);
 };
-// stopProgation impede que quando eu clicar no "desfazer", um novo dot seja exibido em cima do botão.
 const handleUndu= (event) => {
   event.stopPropagation();
   console.log('undu');
+
+  if(list.length === 0)
+  {
+    return;
+  }
+
+// para eu ter um histórico dos dots para serem recuperados.
+  const lastItem= list[list.length-1];
  
-  // Agora trabalha-se na função que vai fazer a retirada do último dot clicado.
+  setUndid((prev) => [...prev, lastItem]);
 
   setList((prev) => {
     const newArr = [...prev].slice(0,-1);
     return newArr;
   })
 };
-// Por ser um array eu consigo fazer um map no meu list. Aqui itero e faço um loop nas informações que tenho.
+
+const handleRedo = (event) => {
+  event.stopPropagation();
+  console.log('redo');
+
+  const recoveredDot= undid[undid.length-1];
+  setUndid((prev) => {
+    const newArr = [...prev].slice(0,-1);
+    return newArr;
+});
+setList((prev) => [...prev, recoveredDot]);
+
+};
+
   return (
   <div id='page' onClick={handleClick}>
     <button onClick={handleUndu}>Desfazer</button>
+    <button onClick={handleRedo}>Refazer</button>
   {list.map((item) => (
   <span 
   className='dot'
