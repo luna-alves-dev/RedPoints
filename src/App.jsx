@@ -56,6 +56,7 @@ setList((prev) => [...prev, recoveredDot]);
     <button onClick={handleRedo}>Refazer</button>
   {list.map((item) => (
   <span 
+  key={item.clientX}
   className='dot'
   style={{ left: item.clientX, top: item.clientY }}
   />
