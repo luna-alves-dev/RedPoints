@@ -1,4 +1,4 @@
-### React interview Challenge
+### React interview Challenge - Dots
 
 Desenvolva uma aplicação em que:
 
