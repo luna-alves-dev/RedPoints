@@ -33,10 +33,13 @@ const handleUndu= (event) => {
     return newArr;
   })
 };
-
+// inseri um if aqui para a aplicação não crachar quando não houver mais dots para serem removidos.
 const handleRedo = (event) => {
   event.stopPropagation();
   console.log('redo');
+  if(undid.length === 0) {
+    return;
+  }
 
   const recoveredDot= undid[undid.length-1];
   setUndid((prev) => {
