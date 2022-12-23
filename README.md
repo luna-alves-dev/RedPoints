@@ -1,4 +1,4 @@
-### React interview Challenge - Dots
+### React Challenge - Dots
 
 Desenvolva uma aplicação em que:
 
@@ -8,6 +8,9 @@ Desenvolva uma aplicação em que:
 - crie duas funcionalidades para a aplicação:
   1) desfazer (undo)
   2) refazer (redo)
+
+https://user-images.githubusercontent.com/102385238/209356038-f7740b88-7acc-4960-a305-39959120b48c.MOV
+
 
 # Getting Started with Create React App
 
